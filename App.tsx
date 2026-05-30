@@ -7,6 +7,7 @@ import Icon from './components/Icon';
 import ScriptCard from './components/ScriptCard';
 import IdeaResultCard from './components/IdeaResultCard';
 import ImageCropper from './components/ImageCropper';
+import { openAffiliateLink } from './affiliateLinks'; // sesuaikan path
 
 // ... (previous imports and constants remain the same) ...
 const GENDER_LABELS: Record<GenderSelection, string> = {

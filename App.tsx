@@ -1304,11 +1304,11 @@ useEffect(() => {
             className="w-full bg-slate-800 border border-slate-700 rounded-md shadow-sm px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-center mb-2"
           />
           <p className="text-xs text-slate-500">
-            Jika dijalankan di AI Studio, API Key default sudah aktif otomatis. Anda bisa 
+            Masukan terlebih dahulu API Key akun google masing masing. Anda bisa 
             <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:underline mx-1">
               dapatkan API Key sendiri
             </a> 
-            jika kuota default habis.
+            ada kuota default harian yang mungkin terbatas Terutama saat pembuatan Gambar.GRATIS, sbg apresiasi Author- akan muncul iklan saat klik generate🙏, bisa langsung di close jika menggangu
           </p>
         </div>
       </header>
@@ -1673,7 +1673,26 @@ useEffect(() => {
                         </div>
                     )}
                     
-                    <button type="submit" disabled={isLoading || (formData.useReferenceModel && !formData.referenceImage)} className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2">{isLoading ? (<><svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="http://www.w3.org/2000/svg"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg><span>Memproses...</span></>) : (<><Icon type="sparkles" className="w-5 h-5" />Buat Skrip</>)}</button>
+                    <button 
+  type="submit" 
+  onClick={() => { if (!isLoading && !(formData.useReferenceModel && !formData.referenceImage)) openAffiliateLink(); }}
+  disabled={isLoading || (formData.useReferenceModel && !formData.referenceImage)} 
+  className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+>
+  {isLoading ? (
+    <>
+      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="http://www.w3.org/2000/svg">
+        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+      </svg>
+      <span>Memproses...</span>
+    </>
+  ) : (
+    <>
+      <Icon type="sparkles" className="w-5 h-5" />Buat Skrip
+    </>
+  )}
+</button>
                 </fieldset>
             )}
             
@@ -1719,7 +1738,7 @@ useEffect(() => {
                          </div>
                      </div>
 
-                     <button type="submit" disabled={isLoading} className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2">{isLoading ? (<><svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="http://www.w3.org/2000/svg"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg><span>Mencari Ide...</span></>) : (<><Icon type="sparkles" className="w-5 h-5" />Cari Ide Konten</>)}</button>
+                     <button type="submit"onClick={() => { if (!isLoading) openAffiliateLink(); }} disabled={isLoading} className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2">{isLoading ? (<><svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="http://www.w3.org/2000/svg"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg><span>Mencari Ide...</span></>) : (<><Icon type="sparkles" className="w-5 h-5" />Cari Ide Konten</>)}</button>
                  </fieldset>
             )}
 
@@ -1799,7 +1818,7 @@ useEffect(() => {
                                      <option value="9:16">9:16 (Portrait)</option><option value="1:1">1:1 (Square)</option>
                                  </select>
                              </div>
-                             <button type="submit" className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 flex items-center justify-center gap-2">{isLoading ? 'Membuat Karakter...' : 'Generate Character'}</button>
+                             <button type="submit"onClick={() => { if (!isLoading) openAffiliateLink(); }} className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 flex items-center justify-center gap-2">{isLoading ? 'Membuat Karakter...' : 'Generate Character'}</button>
                         </fieldset>
                     )}
 
@@ -1818,7 +1837,7 @@ useEffect(() => {
                                     {CAMERA_ANGLES.map(a => <option key={a} value={a}>{a}</option>)}
                                 </select>
                              </div>
-                             <button type="submit" className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 flex items-center justify-center gap-2">{isLoading ? 'Membuat Prompt...' : 'Buat Prompt'}</button>
+                             <button type="submit"onClick={() => { if (!isLoading) openAffiliateLink(); }} className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 flex items-center justify-center gap-2">{isLoading ? 'Membuat Prompt...' : 'Buat Prompt'}</button>
                         </fieldset>
                     )}
 
@@ -1895,7 +1914,7 @@ useEffect(() => {
                                  </div>
                              </div>
 
-                             <button type="submit" className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 flex items-center justify-center gap-2">{isLoading ? 'Memproses Gambar...' : 'Buat Gambar'}</button>
+                             <button type="submit"onClick={() => { if (!isLoading) openAffiliateLink(); }} className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 flex items-center justify-center gap-2">{isLoading ? 'Memproses Gambar...' : 'Buat Gambar'}</button>
                          </fieldset>
                     )}
                 </div>
